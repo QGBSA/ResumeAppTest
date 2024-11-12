@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Resume Fine-Tuning Application</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap/5.1.3/css/bootstrap.min.css">
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+    <script>
+        function showReminder() {
+            const resumeInput = document.getElementById('resume');
+            const jobDescriptionInput = document.getElementById('job_description');
+            const jobUrlInput = document.getElementById('job_url');
+            const reminder = document.getElementById('reminder');
+
+            if (resumeInput.value || jobDescriptionInput.value || jobUrlInput.value) {
+                reminder.style.display = 'block';
+            } else {
+                reminder.style.display = 'none';
+            }
+        }
+    </script>
+</head>
+<body>
+    <!-- Navbar Section -->
+    <nav class="navbar">
+        <div class="logo">ResumeHero</div>
+        <div class="menu">
+            <a href="{{ url_for('index') }}">Home</a>
+            <a href="{{ url_for('about') }}">About</a>
+        </div>
+    </nav>
+
+    <!-- Main Content Container -->
+    <div class="main-container">
+        <div class="upload-wrapper">
+            <h3>One-Stop Resume Fine-Tuning</h3>
+
+            <!-- Flash Messages -->
+            {% with messages = get_flashed_messages(with_categories=True) %}
+                {% if messages %}
+                    <div class="mb-3">
+                        {% for category, message in messages %}
+                            <div class="alert alert-{{ 'success' if category == 'success' else 'danger' }}" role="alert">
+                                {{ message }}
+                            </div>
+                        {% endfor %}
+                    </div>
+                {% endif %}
+            {% endwith %}
+
+            <!-- Upload Form -->
+            <form action="{{ url_for('upload_file') }}" method="post" enctype="multipart/form-data">
+                <div class="mb-3 text-left">
+                    <label for="resume" class="form-label">Upload Resume (*):</label>
+                    <input type="file" class="form-control" name="resume" id="resume" onchange="showReminder()" required>
+                </div>
+                <div class="mb-3 text-left">
+                    <label for="job_description" class="form-label">Upload Job Description (optional):</label>
+                    <input type="file" class="form-control" name="job_description" id="job_description" onchange="showReminder()">
+                </div>
+                <div class="mb-3 text-left">
+                    <label for="job_url" class="form-label">Or Enter Job Posting URL (optional):</label>
+                    <input type="url" class="form-control" name="job_url" id="job_url" placeholder="https://example.com/job-posting" onchange="showReminder()">
+                </div>
+                <small class="text-muted">* You can upload a job description file or provide a job posting URL.</small>
+
+                <!-- Reminder Message -->
+                <div id="reminder" class="reminder">Reminder: Click "Submit" to complete the upload.</div>
+
+                <!-- Button Group -->
+                <div class="button-group">
+                    <a href="{{ url_for('index') }}" class="btn btn-back">Back</a>
+                    <button type="submit" class="btn btn-submit">Submit</button>
+                </div>
+            </form>
+        </div>
+
+        <!-- Additional Navigation Buttons Outside Blue Box -->
+        <div class="extra-buttons">
+            <a href="{{ url_for('analyze_job_posting_route') }}" class="btn btn-extra">Job Analysis</a>
+            <a href="{{ url_for('ats_scores') }}" class="btn btn-extra">Resume Evaluation</a>
+            <a href="{{ url_for('fine_tune') }}" class="btn btn-extra">Resume Fine-Tune</a>
+            <a href="{{ url_for('generate_cover_letter_route') }}" class="btn btn-extra">Cover Letter Generation</a>
+        </div>
+    </div>
+
+    <!-- Footer Section -->
+    <footer class="footer py-3 bg-light text-center">
+        <div class="footer-container">
+            <p class="footer-text mb-0">© 2024 ResumeHero. All rights reserved.</p>
+        </div>
+    </footer>
+</body>
+</html>

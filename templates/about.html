@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>About Us</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap/5.1.3/css/bootstrap.min.css">
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+</head>
+<body>
+    <!-- Navbar Section -->
+    <nav class="navbar">
+        <div class="logo">ResumeHero</div>
+        <div class="menu">
+            <a href="{{ url_for('index') }}">Home</a>
+            <a href="#">About</a>
+        </div>
+    </nav>
+
+    <!-- Main Content Container -->
+    <div class="main-container container mt-5">
+        <div class="upload-wrapper">
+            <h3 class="text-center">About Us</h3>
+            <hr>
+
+            <!-- About Us Content Section -->
+            <div class="about-content">
+                <p>Welcome to ResumeHero! Our goal is to help you optimize your resume, improve job matching, and ensure your application stands out in the competitive job market. Our AI-driven tools assist you in analyzing job postings, improving your resume with relevant keywords, and even generating personalized cover letters. Whether you're fine-tuning your resume or analyzing a job description, ResumeHero provides the insights you need to take your career to the next level!</p>
+
+                <h4>Our Mission</h4>
+                <p>At ResumeHero, we strive to make job application processes smoother and more effective for job seekers. We leverage advanced AI and machine learning to personalize your job application materials and ensure your qualifications shine.</p>
+
+                <h4>Our Features</h4>
+                <ul>
+                    <li>Resume Evaluation: Get a detailed score on how well your resume matches a job description.</li>
+                    <li>Cover Letter Generation: Automatically generate a customized cover letter based on the job posting.</li>
+                    <li>Resume Fine-Tuning: Enhance your resume's effectiveness with AI-driven suggestions.</li>
+                    <li>Job Posting Analysis: Understand key insights from job postings to tailor your application better.</li>
+                </ul>
+            </div>
+        </div>
+    </div>
+
+    <!-- Footer Section -->
+    <footer class="footer py-3 bg-light text-center">
+        <div class="footer-container">
+            <p class="footer-text mb-0">© 2024 ResumeHero. All rights reserved.</p>
+        </div>
+    </footer>
+</body>
+</html>

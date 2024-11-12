@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ATS Resume Score</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap/5.1.3/css/bootstrap.min.css">
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+</head>
+<body>
+    <!-- Navbar Section -->
+    <nav class="navbar">
+        <div class="logo">ResumeHero</div>
+        <div class="menu">
+            <a href="{{ url_for('index') }}">Home</a>
+            <a href="{{ url_for('about') }}">About</a>
+        </div>
+    </nav>
+
+    <!-- Extra Navigation Buttons -->
+    <div class="extra-buttons">
+        <a href="{{ url_for('upload_file') }}" class="btn btn-back">Back to Upload</a>
+        <a href="{{ url_for('analyze_job_posting_route') }}" class="btn btn-extra">Job Analysis</a>
+        <a href="{{ url_for('ats_scores') }}" class="btn btn-extra">Resume Evaluation</a>
+        <a href="{{ url_for('fine_tune') }}" class="btn btn-extra">Resume Fine-Tune</a>
+        <a href="{{ url_for('generate_cover_letter_route') }}" class="btn btn-extra">Cover Letter Generation</a>
+    </div>
+
+    <!-- Main Content Container -->
+    <div class="main-container">
+        <div class="upload-wrapper">
+            <h3 class="text-center">ATS Resume Score</h3>
+            <hr>
+
+            <!-- ATS Resume Score Section -->
+            <div class="ats-results">
+                <h1 class="text-center">{{ score }}</h1>
+                <h2 class="mt-4">Feedback:</h2>
+                <div>{{ feedback | safe }}</div> <!-- Use safe to render HTML -->
+            </div>
+
+            <!-- Bottom Back Button -->
+            <div class="button-group">
+                <a href="{{ url_for('upload_file') }}" class="btn btn-back">Back to Upload</a>
+            </div>
+        </div>
+    </div>
+
+    <!-- Footer Section -->
+    <footer class="footer py-3 bg-light text-center">
+        <div class="footer-container">
+            <p class="footer-text mb-0">© 2024 ResumeHero. All rights reserved.</p>
+        </div>
+    </footer>
+</body>
+</html>

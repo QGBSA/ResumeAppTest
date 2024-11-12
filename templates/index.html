@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ResumeHero - Improve Your Resume</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap/5.1.3/css/bootstrap.min.css">
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+</head>
+<body>
+    <!-- Navbar Section -->
+    <nav class="navbar">
+        <div class="logo">ResumeHero</div>
+        <div class="menu">
+            <a href="{{ url_for('about') }}">About</a>
+            <a href="{{ url_for('upload_file') }}" class="btn btn-primary">Get Started</a>
+        </div>
+    </nav>
+
+    <!-- Hero Section -->
+    <div class="hero-container">
+        <div class="text-content">
+            <h2>Applying for your dream job?</h2>
+            <h1>Get Noticed, Get Ahead, Get Hired</h1>
+            <p>Optimize Your Resume, Unlock Your Career</p>
+            <a href="{{ url_for('upload_file') }}" class="btn-get-started">Get Started</a>
+        </div>
+        <div class="hero-image">
+            <img src="/static/assets/images/ResumeHero.png" alt="Hero Illustration">
+        </div>
+    </div>
+
+    <!-- Footer Section -->
+    <footer class="footer py-3 bg-light text-center">
+        <div class="footer-container">
+            <p class="footer-text mb-0">© 2024 ResumeHero. All rights reserved.</p>
+        </div>
+    </footer>
+</body>
+</html>
